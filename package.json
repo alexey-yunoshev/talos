@@ -1,0 +1,25 @@
+{
+  "name": "@ayunoshev/talos",
+  "version": "0.0.1",
+  "description": "Alternative error handling approach",
+  "main": "dist/index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexey-yunoshev/talos.git"
+  },
+  "keywords": [
+    "error"
+  ],
+  "author": "Alexey Yunoshev <alexey.yunoshev@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexey-yunoshev/talos/issues"
+  },
+  "homepage": "https://github.com/alexey-yunoshev/talos#readme"
+}
