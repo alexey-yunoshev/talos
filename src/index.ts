@@ -1,5 +1,5 @@
-export interface Error {
-    code: string,
+export interface Error<Code extends string = string> {
+    code: Code,
     message: string,
 }
 
@@ -21,9 +21,9 @@ export class Ok<T> {
     }
 }
 
-export class Err {
+export class Err<Code extends string = string> {
 
-    constructor(public error: Error) {
+    constructor(public error: Error<Code>) {
     }
 
     mapErr(): Error {
@@ -39,12 +39,12 @@ export class Err {
     }
 }
 
-export type Result<T> = Ok<T> | Err;
+export type Result<T, Code extends string = string> = Ok<T> | Err<Code>;
 
-export function match<A, T>(
-    result: Result<T>,
-    handleOk: (ok: T) => A,
-    handleErr: (error: Error) => A,
+export function match<callbackReturnValueType, OkValueType, ErrorCode extends string = string>(
+    result: Result<OkValueType, ErrorCode>,
+    handleOk: (ok: OkValueType) => callbackReturnValueType,
+    handleErr: (error: Error<ErrorCode>) => callbackReturnValueType,
 ) {
     if (result.isOk()) {
         return handleOk(result.value)
