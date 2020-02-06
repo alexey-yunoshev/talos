@@ -1,4 +1,4 @@
-import {Err, match, Ok, Result} from '../src';
+import {err, match, ok, Result} from '../src';
 
 enum ErrorCode {
     NotFound = 'not_found',
@@ -11,19 +11,13 @@ type TestErrorCode = ErrorCode.NotFound | ErrorCode.SomeOther;
 function test(): Result<number, TestErrorCode> {
     try {
         const result = 1 + 1;
-        return new Ok(result);
+        return ok(result);
     } catch (e) {
 
         if (2 !==2) {
-            return new Err({
-                code: ErrorCode.SomeOther,
-                message: 'hello',
-            });
+            return err(ErrorCode.SomeOther, 'hello');
         }
-        return new Err({
-            code: ErrorCode.NotFound,
-            message: 'hello',
-        });
+        return err(ErrorCode.NotFound, 'hello');
     }
 }
 
